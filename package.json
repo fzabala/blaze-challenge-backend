@@ -1,0 +1,84 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rm -rf build && tsc -p tsconfig.json",
+    "start:watch": "nodemon",
+    "start": "cross-env NODE_PATH=. NODE_PATH=build node build/index.js",
+    "dev": "cross-env NODE_PATH=. NODE_ENV=development nodemon --ignore src/__tests__ -r tsconfig-paths/register src/index.ts",
+    "test": "cross-env NODE_PATH=. NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --coverage",
+    "lint": "eslint .",
+    "prepare": "test -d node_modules/husky && husky install || echo \"husky is not installed\"",
+    "migrate": "npx knex migrate:latest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "knex": "^3.1.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
+    "pg": "^8.11.3",
+    "sqlite3": "^5.1.6",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.10",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.10.3",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.10.9",
+    "@types/supertest": "^2.0.16",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "axios-mock-adapter": "^1.22.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!variables/.*)"
+    ],
+    "testMatch": [
+      "**/?(*.)+(spec|test).ts"
+    ],
+    "setupFiles": [
+      "dotenv/config"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --cache --fix",
+      "prettier -w"
+    ],
+    "*.{md,mdx,json,yml,css,scss}": [
+      "prettier -w"
+    ]
+  }
+}

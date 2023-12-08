@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "rootDir": "src/",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "target": "es6",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "outDir": "build",
+      "baseUrl": "src",
+      "paths": {
+        "*": ["*"]
+      },
+      "typeRoots": ["./src/@types", "./node_modules/@types"],
+      "resolveJsonModule": true
+    },
+    "lib": ["es2015", "es6", "DOM"],
+    "include": ["src/", "src/*", "src/**/*", "src/**/*.test.ts"],
+    "exclude": [
+      "**/__tests__/*.ts",
+      "**/__tests__/*.test",
+      "**/__tests__/**/*.test"
+    ],
+    "compileOnSave": true,
+    "buildOnSave": false
+  }

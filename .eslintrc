@@ -1,0 +1,55 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:prettier/recommended",
+      "plugin:import/recommended",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-unused-expressions": "error",
+      "import/no-default-export": "error",
+      "no-useless-rename": "error"
+    },
+    "env": {
+      "jest": true
+    },
+    "globals": {
+      "NodeJS": true
+    },
+    "plugins": ["@typescript-eslint"],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    },
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"],
+        "extends": ["plugin:@typescript-eslint/recommended"],
+        "rules": {
+          "no-unused-expressions": "error",
+          "@typescript-eslint/no-explicit-any": "error",
+          "@typescript-eslint/no-unused-vars": "error"
+        }
+      },
+      {
+        "files": ["**/testing/**", "*.test.ts", "*.test.tsx"],
+        "plugins": ["jest"],
+        "extends": [
+          "plugin:jest/recommended",
+          "plugin:jest/style"
+        ],
+        "env": {
+          "jest": true
+        },
+        "rules": {
+          "jest/no-alias-methods": "off",
+          "unicorn/consistent-function-scoping": "off",
+          "no-undef": "off",
+          "testing-library/prefer-user-event": "off"
+        }
+      }
+    ]
+  }

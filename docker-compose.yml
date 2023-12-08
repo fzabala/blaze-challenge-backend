@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  blaze_backend:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - blaze_db
+    env_file:
+      - ./.env
+    volumes:
+      - .:/app
+
+  blaze_db:
+    image: postgres:latest
+    env_file:
+      - ./.env

@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+build/
+.env
+.env.test
+*.log
+.eslintcache
+coverage
+src/wkhtmltox
