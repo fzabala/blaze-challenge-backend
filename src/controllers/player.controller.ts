@@ -11,6 +11,6 @@ export const getPlayersByTeam = async (req: Request, res: Response) => {
     return res.send({ data: players });
   } catch (e) {
     logger.error(e.message, e.stack);
-    return res.status(400).send({ error: e.message });
+    return res.status(400).send({ message: e.message });
   }
 };

@@ -8,6 +8,6 @@ export const getTeams = async (req: Request, res: Response) => {
     return res.send({ data: teams });
   } catch (e) {
     logger.error(e.message, e.stack);
-    return res.status(400).send({ error: e.message });
+    return res.status(400).send({ message: e.message });
   }
 };
